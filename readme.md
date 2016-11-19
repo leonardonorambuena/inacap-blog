@@ -1,4 +1,4 @@
-# Laravel PHP Framework
+# Inacap Blog con LARAVEL 
 
 Proyecto basico desarrollado en Laravel versión 5.3 con fines educativos impartido por Leonardo Norambuena en Inacap Sede Rancagua, 
 
