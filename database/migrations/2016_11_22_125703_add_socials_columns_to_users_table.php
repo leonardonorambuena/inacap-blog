@@ -14,10 +14,11 @@ class AddSocialsColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar');
-            $table->string('facebook_url');
-            $table->string('twiter_url');
-            $table->string('linkedin_url');
+            $table->string('avatar')->default(null);
+            $table->string('facebook_url')->default(null);
+            $table->string('twiter_url')->default(null);
+            $table->string('linkedin_url')->default(null);
+            $table->string('description')->default(null);
         });
     }
 
@@ -29,7 +30,7 @@ class AddSocialsColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['avaratar','facebook_url', 'twiter_url', 'linkedin_url']);
+            $table->dropColumn(['avatar','facebook_url', 'twiter_url', 'linkedin_url', 'description']);
         });
     }
 }
