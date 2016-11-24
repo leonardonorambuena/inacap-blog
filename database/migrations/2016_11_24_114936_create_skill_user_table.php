@@ -15,7 +15,7 @@ class CreateSkillUserTable extends Migration
     {
         Schema::create('skill_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integrer('skill_id')->unsigned();
+            $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skills');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
