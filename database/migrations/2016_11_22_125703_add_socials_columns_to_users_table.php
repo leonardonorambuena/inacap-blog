@@ -14,11 +14,11 @@ class AddSocialsColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->default(null);
-            $table->string('facebook_url')->default(null);
-            $table->string('twiter_url')->default(null);
-            $table->string('linkedin_url')->default(null);
-            $table->string('description')->default(null);
+            $table->string('avatar')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->string('twiter_url')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('description')->nullable();
         });
     }
 
