@@ -31,4 +31,24 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['deleted_at'];
+
+
+    /*Relaciones */
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /*Mutadores*/
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

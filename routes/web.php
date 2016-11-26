@@ -17,8 +17,8 @@ Route::get('/', function () {
 });
 
 Route::get('/users/', function(){
-	$users = User::all();
-	return view('prueba',compact('users'));
+	$users = User::with('role')->get();
+	return view('users.prueba',compact('users'));
 });
 
 Auth::routes();
