@@ -1,25 +1,16 @@
 @extends('layouts.app')
-@section('title','Users')
 @section('content')
-<table class="table">
-	<thead>
-		<tr>
-			<th>Nombre de usuario</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Role</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach($users as $user)
-			<tr>
-				<td>{{ $user->user_name}}</td>
-				<td>{{ $user->first_name }}</td>
-				<td>{{ $user->last_name }}</td>
-				<td>{{ $user->role->name }}</td>
-			</tr>
-		@endforeach
-	</tbody>
-</table>
-{{ $users->links() }}
+	<div class="container">
+	@include('partials.message')
+		@include('admin.users.partials.search')
+    	@include('admin.users.partials.usersList')
+	</div>
+
+	@include('admin.users.partials.modal-delete-user')
+	@include('admin.users.partials.modal-restore-user')
+	
+@stop
+
+@section('js')
+	<script type="text/javascript" src="/js/user.js"></script>
 @stop

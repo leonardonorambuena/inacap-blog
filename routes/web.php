@@ -11,16 +11,19 @@
 |
 */
 
-use App\User;
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/users/', function(){
-	$users = User::with('role')->get();
-	return view('users.prueba',compact('users'));
-});
+Route::get('/post/{post}', 'HomeController@show');
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::post('/profile', 'ProfileController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+/*Route::group(['prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => ['admin']], function(){
+	include __DIR__. '/admin.php';
+});*/
+
+
+

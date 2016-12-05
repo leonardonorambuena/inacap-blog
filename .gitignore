@@ -5,3 +5,12 @@
 Homestead.json
 Homestead.yaml
 .env
+/.phpintel
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env

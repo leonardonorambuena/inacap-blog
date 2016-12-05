@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
 class UsersController extends Controller
 {
     /**
@@ -60,7 +61,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::orderBy('name')->get();
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**

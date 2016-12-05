@@ -11,18 +11,24 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
 
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'user_name' => $faker->unique()->userName,
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->userName,
-        'email' => $faker->unique()->safeEmail,
-        'password' => 'secret',
+        'user_name' => $faker->unique()->userName(),
+        'first_name' => $faker->firstName(),
+        'last_name' => $faker->lastName(),
+        'email' => $faker->unique()->safeEmail(),
+        'password' =>  'secret',
         'remember_token' => str_random(10),
-        'role_id' => 3,
+        'phone' => $faker->phoneNumber(),
         'section' => '2016',
-        'phone' => $faker->phoneNumber()
+        'role_id' => rand(2,3),
     ];
 });
+
+$factory->define(App\Skill::class, function(Faker\Generator $faker){
+    return [
+        'name' => $faker->sentence()
+    ];
+});
+

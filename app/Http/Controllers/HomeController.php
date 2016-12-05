@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        Carbon::setLocale('es');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('home', compact('posts'));
+    }
+
+    public function show(Post $post)
+    {
+        $post->rating += 1;
+        $post->save();
+        $post->with('tags');
+        return view('posts.show',compact('post'));
     }
 }

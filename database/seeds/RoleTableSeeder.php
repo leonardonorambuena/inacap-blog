@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
+
 use App\Role;
+use Carbon\Carbon;
 class RoleTableSeeder extends Seeder
 {
     /**
@@ -14,18 +15,17 @@ class RoleTableSeeder extends Seeder
     {
         DB::table('roles')->insert([
         	'short_name' => 'Admin',
-        	'name' => 'Administrador',
-        	'description' => 'Adminisrador del Sistema',
+        	'name' => 'Administrator',
+        	'description' => 'Administrador del Sistema',
         	'created_at' => Carbon::now(),
         	]);
 
         DB::table('roles')->insert([
         	'short_name' => 'Edit',
         	'name' => 'Editor',
-        	'description' => 'Editor del Sistema',
+        	'description' => 'Editor de Posts',
         	'created_at' => Carbon::now(),
         	]);
-
         DB::table('roles')->insert([
         	'short_name' => 'User',
         	'name' => 'User',

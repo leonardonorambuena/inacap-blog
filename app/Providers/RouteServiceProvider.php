@@ -60,6 +60,26 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => 'admin',
+            'namespace' =>  $this->namespace.'\Admin',
+            'prefix' => 'admin/'
+        ], function ($router) {
+            require base_path('routes/admin.php');
+        });
+    }
+
+
     /**
      * Define the "api" routes for the application.
      *
@@ -77,16 +97,4 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/api.php');
         });
     }
-
-     protected function mapAdminRoutes()
-    {
-        Route::group([
-            'middleware' => ['web','auth'],
-            'namespace' => $this->namespace.'\Admin',
-            'prefix' => 'admin',
-        ], function ($router) {
-            require base_path('routes/admin.php');
-        });
-    }
-
 }
